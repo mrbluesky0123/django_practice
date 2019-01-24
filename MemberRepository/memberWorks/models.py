@@ -12,6 +12,8 @@ class Member(models.Model):
     def __str__(self):
         return self.mbr_id + ', ' + self.name + ', ' + self.mdn
 
+    def
+
 class Point(models.Model):
     mbr_id = models.CharField(max_length = 9)
     point_kind = models.CharField(max_length = 3)
