@@ -58,12 +58,14 @@ def toy_detail(request, pk):
 def toy_list(request):
     if request.method == 'GET':
         toys = Toy.objects.all()
+        
         toy_serializer = ToySerializer(toys, many=True)
         return Response(toy_serializer.data)
     
     elif request.method == 'POST':
         # toy_data = JSONParser().parse(request)
-        toy_serializer = ToySerializer(data=toy_data)
+        print('###### ' + str(type(request.data)))
+        toy_serializer = ToySerializer(data=request.data)
         if toy_serializer.is_valid():
             toy_serializer.save()
             return Response(toy_serializer.data, status=status.HTTP_201_CREATED)
@@ -83,7 +85,7 @@ def toy_detail(request, pk):
     
     elif request.method == 'PUT':
         # toy_data = JSONParser().parse(request)
-        toy_serializer = ToySerializer(toy, data = toy_data)
+        toy_serializer = ToySerializer(toy, data = request.data)
         if toy_serializer.is_valid():
             toy_serializer.save()
             return Response(toy_serializer.data)

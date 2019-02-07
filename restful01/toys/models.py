@@ -12,3 +12,15 @@ class Toy(models.Model):
 
     class Meta:
         ordering = ('name',)
+
+class One(models.Model):
+    one = models.IntegerField()
+
+    class Meta:
+        db_table = 'OneTwo'
+
+class Two(models.Model):
+    two = models.IntegerField()
+
+    class Meta:
+        db_table = 'OneTwo'
